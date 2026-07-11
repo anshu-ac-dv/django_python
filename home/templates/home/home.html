@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopKart</title>
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+</head>
+<body>
+    <header class="topbar">
+        <a href="/" class="brand" aria-label="ShopKart home">
+            <span class="brand-mark">S</span>
+            <span>
+                <strong>ShopKart</strong>
+                <small>Explore Plus</small>
+            </span>
+        </a>
+
+        <form class="search" role="search">
+            <input type="search" placeholder="Search for products, brands and more" aria-label="Search products">
+            <button type="submit">Search</button>
+        </form>
+
+        <nav class="actions" aria-label="Primary">
+            <a href="#">Login</a>
+            <a href="#">Cart</a>
+            <a href="#">Seller</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="category-strip" aria-label="Shop by category">
+            {% for category in categories %}
+                <a class="category" href="#">
+                    <span class="category-visual {{ category.icon }}" aria-hidden="true"></span>
+                    <span>{{ category.name }}</span>
+                </a>
+            {% endfor %}
+        </section>
+
+        <section class="hero" aria-label="Big billion style offers">
+            <div class="hero-copy">
+                <span>Super Saver Days</span>
+                <h1>Mega deals across your favourite categories</h1>
+                <p>Fresh picks, fast delivery, and offers that make every cart feel lighter.</p>
+                <a href="#" class="hero-button">Shop Now</a>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+                <div class="box box-one"></div>
+                <div class="box box-two"></div>
+                <div class="product-phone"></div>
+                <div class="product-headset"></div>
+                <div class="product-shoe"></div>
+            </div>
+        </section>
+
+        <section class="deal-row" aria-label="Popular shopping benefits">
+            {% for deal in deals %}
+                <div>{{ deal }}</div>
+            {% endfor %}
+        </section>
+
+        <section class="product-section" aria-labelledby="top-deals-heading">
+            <div class="section-heading">
+                <h2 id="top-deals-heading">Top Deals</h2>
+                <a href="#">View All</a>
+            </div>
+
+            <div class="product-grid">
+                {% for product in products %}
+                    <article class="product-card">
+                        <div class="product-art {{ product.type }}" aria-hidden="true"></div>
+                        <span>{{ product.tag }}</span>
+                        <h3>{{ product.name }}</h3>
+                        <p>{{ product.price }}</p>
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="banner-grid" aria-label="Featured departments">
+            <a href="#" class="mini-banner fashion-banner">
+                <span>Fresh Fashion</span>
+                <strong>Min. 50% off</strong>
+            </a>
+            <a href="#" class="mini-banner home-banner">
+                <span>Home Essentials</span>
+                <strong>Deals of the day</strong>
+            </a>
+            <a href="#" class="mini-banner tech-banner">
+                <span>Electronics</span>
+                <strong>Upgrade now</strong>
+            </a>
+        </section>
+    </main>
+</body>
+</html>
